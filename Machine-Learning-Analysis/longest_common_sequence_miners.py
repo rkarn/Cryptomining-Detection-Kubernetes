@@ -21,3 +21,29 @@ def lcs(S,T):
     return lcs_set
 
 #print lcs(syscalldict[syscalldict.keys()[0]],syscalldict[syscalldict.keys()[1]])
+
+#Longest common sequence of syscalls between the miners.
+#https://www.geeksforgeeks.org/sequencematcher-in-python-for-longest-common-substring/
+from difflib import SequenceMatcher 
+def longestSubstring(str1,str2): 
+    # initialize SequenceMatcher object with 
+    # input string 
+    seqMatch = SequenceMatcher(None,str1,str2) 
+
+    # find match of longest sub-string 
+    # output will be like Match(a=0, b=0, size=5) 
+    match = seqMatch.find_longest_match(0, len(str1), 0, len(str2)) 
+
+    # print longest substring 
+    if (match.size!=0): 
+        return (str1[match.a: match.a + match.size]) 
+    else: 
+        print ('No longest common sub-string found') 
+
+if __name__ == "__main__": 
+    syscalldict_keys = syscalldict.keys()
+    for i in range(len(syscalldict_keys)):
+        for j in range(len(syscalldict_keys)):
+            if i != j:
+                print 'Longest continuous sequence between {0} and {1} is {2}.'.format(syscalldict_keys[i],syscalldict_keys[j],longestSubstring(syscalldict[syscalldict_keys[j]],syscalldict[syscalldict_keys[i]]))
+        print '-------------------------------------------------------------------------------'
