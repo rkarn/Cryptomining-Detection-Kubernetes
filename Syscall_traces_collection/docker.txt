@@ -1,0 +1,9 @@
+1. Get long container-id of docker container. 
+Script: docker inspect <container name> j grep Id.
+
+2.  Run perf using long container-id collected in step 1.
+Script: perf record -e ’raw syscalls:sys enter’ -g --exclude-perf -a --call-graph dwarf,4096 -o perf logfile name -G docker<docker long id>
+This generate perf log in a file named perf logfile name.
+
+3. Generate the raw syscalls file from perf log (perf logfile name) collected in step 2. 
+Script: perf script -i perf logfile name > syscalls rawfile name.
