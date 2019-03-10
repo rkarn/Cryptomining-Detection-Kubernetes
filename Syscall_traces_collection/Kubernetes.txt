@@ -1,0 +1,16 @@
+1. Get the class of C-group for the pod. It can be either besteffort or burstable. 
+Script: kubectl get pods <pod-name> -o yaml j grep qosClass
+
+2. Get the uid of the pod. 
+Script: kubectl get pods <pod-name> -o yaml — grep uid. 
+Two uid are available in yaml file. First is for administrative container and second is for workload container. Collect the second uid.
+
+3. Get long container-id of the pod. 
+Script: docker inspect <container name> | grep Id
+
+4. Run perf using long container-id collected in step 3, uid collected in step 2 and C-group class collected in step 1. 
+Script: perf record -e ’raw syscalls:sys enter’ -g --exclude-perf -a --call-graph dwarf,4096 -o sys call collected -G kubepods<qosClassfield> pod<uid-field>long-container-id. 
+This generate perf log in a file names perf logfile name.
+
+5. Generate the raw syscalls file from perf log (perf logfile name) collected in step 4. 
+Script: perf script -i perf logfile name > syscalls rawfile name
