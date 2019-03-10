@@ -1,4 +1,4 @@
-# Cryptomining-Detection-Kubernetes
+# Cryptomining-Detection-Kubernetes-Explainable-Machine-Learning
 
 Raw syscalls files collected for different cryptominers and helathy workloads can be downloaded from:
 
