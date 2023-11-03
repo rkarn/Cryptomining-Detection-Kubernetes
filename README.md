@@ -1,5 +1,9 @@
 # Cryptomining-Detection-Kubernetes-Explainable-Machine-Learning
 
+This repository contains the source code to reproduce some of the results of our paper:
+
+`Karn, Rupesh Raj, Prabhakar Kudva, Hai Huang, Sahil Suneja, and Ibrahim M. Elfadel. "Cryptomining detection in container clouds using system calls and explainable machine learning." IEEE transactions on parallel and distributed systems 32, no. 3 (2020): 674-691.`
+
 Raw syscalls files collected for different cryptominers and helathy workloads can be downloaded from:
 
     https://drive.google.com/open?id=1BQPYvYPY2luTYaW4kXhbUgaFJ0vMnc1i
